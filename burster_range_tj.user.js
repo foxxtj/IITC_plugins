@@ -56,13 +56,18 @@ function wrapper(plugin_info) {
         var coo = d._latlng;
         var latlng = new L.LatLng(coo.lat,coo.lng);
         var optCircle = {color:'grey',opacity:0.7,fillColor:'grey',fillOpacity:0.1,weight:1,clickable:false, dashArray: [10,6]};
+        var ResoOptCircle = {color:'orange',opacity:0.7,fillColor:'orange',fillOpacity:0.1,weight:1,clickable:false, dashArray: [10,6]};
         var range = 168;
+        var resoRange = 208;
 
         var circle = new L.Circle(latlng, range, optCircle);
+        var resoCircle = new L.Circle(latlng, resoRange, ResoOptCircle);
 
         circle.addTo(window.plugin.bursterRange.bursterCircleHolderGroup);
+        resoCircle.addTo(window.plugin.bursterRange.bursterCircleHolderGroup);
 
         window.plugin.bursterRange.bursterLayers[guid] = circle;
+        window.plugin.bursterRange.bursterLayers[guid] = resoCircle;
 
     };
     
