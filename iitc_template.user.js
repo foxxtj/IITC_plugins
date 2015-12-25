@@ -1,9 +1,9 @@
 // ==UserScript==
-// @id hello-iitc
+// @id hello-iitc@tj
 // @name IITC Plugin: Hello World
 // @category Misc
 // @version 0.0.1
-// @namespace https://tempuri.org/iitc/hello
+// @namespace https://github.com/foxxtj/iitc-plugins
 // @description Hello, World plugin for IITC
 // @include http://www.ingress.com/intel*
 // @match http://www.ingress.com/intel*
@@ -20,18 +20,9 @@ function wrapper(plugin_info) {
     // and other plugins assume the same.
     if(typeof window.plugin !== 'function') window.plugin = function() {};
 
-    // Name of the IITC build for first-party plugins
-    plugin_info.buildName = 'hello';
-
-    // Datetime-derived version of the plugin
-    plugin_info.dateTimeVersion = '20150829103500';
-
-    // ID/name of the plugin
-    plugin_info.pluginId = 'hello';
-
     // The entry point for this plugin.
     function setup() {
-        alert('Hello, IITC!');
+        window.addHook('portalAdded', function(data) { console.log(data) });
     }
 
     // Add an info property for IITC's plugin system
